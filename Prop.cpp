@@ -5,13 +5,16 @@ Prop::Prop(Texture2D tex, Vector2 pos) : texture(tex), worldPos(pos)
 {
 }
 
-Prop::~Prop()
+void Prop::Render(Vector2 knightPos)
 {
-    UnloadTexture(texture);
+    screenPos = Vector2Subtract(worldPos, knightPos);
+    DrawTextureEx(texture, screenPos, 0.f, scale, WHITE);
 }
 
-void Prop::Render(Vector2 knigtPos)
+Rectangle Prop::GetCollisionRec(Vector2 knightPos)
 {
-    screenPos = Vector2Subtract(worldPos, knigtPos);
-    DrawTextureEx(texture, screenPos, 0.f, scale, WHITE);
+    screenPos = Vector2Subtract(worldPos, knightPos);
+    return Rectangle{
+        screenPos.x, screenPos.y,
+        texture.width * scale, texture.height * scale};
 }

@@ -10,16 +10,16 @@ Character::Character(int winWidth, int winHeight)
         static_cast<float>(winHeight) / 2.0f - scale * (0.5f * height)};
 }
 
-Character::~Character()
-{
-    UnloadTexture(texture);
-    UnloadTexture(idle);
-    UnloadTexture(run);
-}
-
 void Character::undoMovement()
 {
     worldPos = worldPosLastFrame;
+}
+
+Rectangle Character::GetCollisionRec()
+{
+    return Rectangle{
+        screenPos.x, screenPos.y,
+        width * scale, height * scale};
 }
 
 void Character::tick(float deltaTime)

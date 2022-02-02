@@ -4,10 +4,10 @@ class Character
 {
 public:
     Character(int winWidth, int winHeight);
-    ~Character();
     Vector2 getWorldPos() { return worldPos; }
     void tick(float deltaTime);
     void undoMovement();
+    Rectangle GetCollisionRec();
 
 private:
     const char *knightIdleFilepath = "characters/knight_idle_spritesheet.png";
