@@ -1,7 +1,8 @@
 #include "Prop.h"
 #include "raymath.h"
 
-Prop::Prop(Texture2D tex, Vector2 pos) : texture(tex), worldPos(pos)
+Prop::Prop(Vector2 pos, Texture2D tex)
+    : worldPos(pos), texture(tex)
 {
 }
 
